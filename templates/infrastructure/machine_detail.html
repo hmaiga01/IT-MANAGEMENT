@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="row">
+    <li class="list-group-item">
+        <div class="row">
+          <div class="col-md-7">
+            <h3>{{ machine.nom }}</h3>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th scope="row">Propriétaire</th>
+                  <td>{{ machine.proprietaire.first_name }} {{ machine.proprietaire.last_name }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Infrastructure</th>
+                  <td>{{ machine.infrastructure.nom }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Date de maintenance</th>
+                  <td>{{ machine.date_maintenance }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Date de création</th>
+                  <td>{{ machine.date_de_creation }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Date de dernière modification</th>
+                  <td>{{ machine.date_derniere_modification }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Statut</th>
+                  <td>{{ machine.get_statut_display }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Type</th>
+                  <td>{{ machine.get_type_display }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Caractéristiques</th>
+                  <td>{{ machine.caracteristiques }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Est assignée</th>
+                  <td>{{ machine.est_assignee }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Dernière modification par</th>
+                  <td>{{ machine.modifie_par.username }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-4">
+            <img src="{{ machine.get_image_url }}" alt="Image de la machine" class="img-fluid">
+          </div>
+        </div>
+        
+    </li>
+   
+      <div> 
+
+        <a href="{% url 'supprimer_machine' machine.id %}" class="btn btn-danger">Supprimer</a>
+        <a href="{% url 'modifier_machine' machine.id %}" class="btn btn-primary">Modifier</a>
+      </div>
+{% endblock %}

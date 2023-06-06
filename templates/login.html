@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formulaire de connexion</title>
+    <!-- Liens vers les fichiers CSS de Bootstrap -->
+    <link rel="stylesheet" href="{% static 'bootstrap-4.0.0/bootstrap-4.0.0/dist/css/bootstrap.min.css' %}">
+    <!-- Liens vers les fichiers CSS d'animations impressionnantes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Votre fichier CSS personnalisé -->
+    <style>
+        body {
+          background-color: #fff;
+          color: #000;
+        }
+        .logo {
+          text-align: center;
+        }
+       
+        .company-name {
+          text-align: center;
+          font-size: 24px;
+          margin-bottom: 20px;
+        }
+        .login-form {
+          max-width: 300px;
+          margin: 0 auto;
+        }
+      </style>
+      <title>R&T Development</title>
+    </head>
+    <body>
+      <div class="container">
+        <div class="logo">
+          <img src="{% static 'images/logo.png' %}" alt="Logo de votre entreprise">
+        </div>
+        <div>
+            {% if messages %}
+            {% for message in messages %}
+            <div class="container-fluid p-0">
+              <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="True">&times;</span>
+                </button>
+                {{ message }}
+              </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <h1 class="company-name animate-fade-in">IT MANAGEMENT</h1>
+        <form method="post" class="login-form animate-fade-in">
+          {% csrf_token %}
+          <div class="form-group">
+            <input type="text" name="username" class="form-control" placeholder="Nom d'utilisateur">
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" class="form-control" placeholder="Mot de passe">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+        </form>
+      </div>
+    
+    </body>
+</html>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<!-- Scripts JavaScript de Bootstrap -->
+<script src="{% static 'bootstrap-4.0.0/bootstrap-4.0.0/dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'bootstrap-4.0.0/bootstrap-4.0.0/assets/js/vendor/popper.min.js' %}"></script>
+<!-- Script JavaScript pour activer les animations -->
+<script>
+    $(document).ready(function() {
+        $('.company-name, .login-form').addClass('animate-fade-in');
+    });
+</script>

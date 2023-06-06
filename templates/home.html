@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+    {% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <!-- font-awesome -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+ <!-- Liens vers les fichiers CSS de Bootstrap -->
+ <link rel="stylesheet" href="{% static 'bootstrap-4.0.0/bootstrap-4.0.0/dist/css/bootstrap.min.css' %}">
+  <title>R&T Development</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+        <div class="">
+          <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-12">
+        <h1 class="display-2"> <b>Bienvenue sur notre site</b></h1>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-12 text-center">
+        <h3 class="display-5">R&T Development est une entreprise grandissante, de nouveaux besoins sur le plan informatique émergent et nécessitent le renforcement de l'équipe DSI (Direction des Systèmes Informatisés) en particulier dans le domaine des infrastructures.</h3>
+        <a href="{% url 'login' %}" class="btn btn-primary">Se connecter</a>
+
+      </div>
+    </div>
+</div>
+
+<!--jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<!-- Scripts JavaScript de Bootstrap -->
+<script src="{% static 'bootstrap-4.0.0/bootstrap-4.0.0/dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'bootstrap-4.0.0/bootstrap-4.0.0/assets/js/vendor/popper.min.js' %}"></script></body>
+</html>

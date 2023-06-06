@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content  %}
+
+<h2 class="text-center"> Creation d'un nouveau membre du personnels </h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary" type="submit">Créer</button>
+  </form>
+
+{% endblock %}

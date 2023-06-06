@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block head %}
+.machine-details {
+    margin-top: 20px;
+  }
+  .machine-image {
+    width: 100%;
+    height: auto;
+    border: 2px solid black;
+    border-radius: 10px;
+  }
+  .attribute-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .attribute-value {
+    font-style: bold;
+  }
+  .btn-modifier {
+    margin-top: 20px;
+  }
+{% endblock %}
+
+{% block content %}
+
+<div class="col-md-6 offset-md-3">
+    <div class="machine-details">
+    {% if machine %}    
+      <img src="{{ machine.get_image_url }}" alt="Image de la machine" class="machine-image">
+      <br>
+      <div class="row">
+        <div class="col-4">
+          <h2 class="attribute-name">Machine:</h2>
+          <p class="attribute-value">{{ machine.nom }}</p>
+          <h2 class="attribute-name">ID:</h2>
+
+          <p class="attribute-value">{{ machine.id }}</p>
+        </div>
+        <div class="col-4">
+          <h2 class="attribute-name">Infrastructure:</h2>
+          <p class="attribute-value">{{ machine.infrastructure.nom }}</p>
+          <h2 class="attribute-name">Type:</h2>
+          <p class="attribute-value">{{ machine.get_type_display }}</p>
+          <h2 class="attribute-name">Statut de la Machine:</h2>
+          <p class="attribute-value">{{ machine.get_statut_display }}</p>
+       
+        </div>
+        <div class="col-4">
+            <h2 class="attribute-name">Propriétaire:</h2>
+
+            <p class="attribute-value">{{ machine.proprietaire.first_name }} {{ machine.proprietaire.last_name }}</p>
+            <h2 class="attribute-name">Date de maintenance:</h2>
+            <p class="attribute-value">{{ machine.date_maintenance }}</p>
+          </div>
+      </div>
+      <!-- <button class="btn btn-primary btn-modifier">Modifier</button> -->
+    {% else %}
+        <p> Pas de machine pour vous <p>
+    {% endif %}          
+    </div>
+  </div>
+
+{% endblock %}

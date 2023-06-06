@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+  
+  <div class="col-12">
+    <ul class="list-group">
+        <h3 class="text-center "> Liste Machines </h3>
+       
+        <li class="list-group-item">
+  <div class="row">
+    <div class="col-md-12">
+     
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Nom de l'appareil </th>
+            <th scope="row">Propriétaire</th>
+            <th scope="row">Infrastructure</th>
+            
+            <th scope="row">Est assignée</th>
+            <th scope="row">Dernière modification par</th>
+            <th scope="row">Action</th>
+          </tr>
+          {% for machine in machines %}
+          <tr>
+            <td>{{ machine.nom }}</td>
+            <td>{{ machine.proprietaire.first_name }} {{ machine.proprietaire.last_name }}</td>
+            <td>{{ machine.infrastructure.nom }}</td>
+            
+            <td>{{ machine.est_assignee }}</td>
+            <td>{{ machine.modifie_par.username }}</td>
+            <td>
+              <a href="{% url 'machine_detail' machine.id %}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+</li>
+
+          
+   
+      
+    </ul>
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    // Get all the link items
+    const linkItems = document.querySelectorAll('.list-group-item');
+  
+    // Add click event listener to each link item
+    linkItems.forEach((item) => {
+      item.addEventListener('click', (event) => {
+        // Remove active class from all link items
+        linkItems.forEach((link) => {
+          link.classList.remove('active');
+        });
+        
+        // Add active class to the clicked link item
+        event.target.classList.add('active');
+      });
+    });
+  </script>
+{% endblock %}
